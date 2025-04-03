@@ -30,9 +30,8 @@ const Staking = ({ walletAddress, selectedChain }) => {
   const [stakeToken, setStakeToken] = useState('0x0000000000000000000000000000000000000000');
   const [tokenBalance, setTokenBalance] = useState(0);
   const [approval, setApproval] = useState(false);
-  const [claimed, setClaimed] = useState(false);
-  const [unstaked, setUnstaked] = useState(false);
-
+  const [claiming, setClaiming] = useState(false);
+  const [unstaking, setUnstaking] = useState(false);
 
 
   const provider = chain ? new JsonRpcProvider(chain.rpcUrl) : null;
@@ -50,7 +49,7 @@ const Staking = ({ walletAddress, selectedChain }) => {
     };
     const fetchTokenDetails = async () => {
       try {
-        
+
         // Attach a runner to the contract for read calls
         const contractWithRunner = contract.connect(provider);
         const token = await contractWithRunner.token();
@@ -99,9 +98,9 @@ const Staking = ({ walletAddress, selectedChain }) => {
   };
 
   useEffect(() => {
-    if (!walletAddress || !chain) return;
+    if ((!walletAddress || !chain) && (!claiming || !unstaking)) return;
     getStakes();
-  }, [walletAddress, chain, claimed, unstaked]);
+  }, [walletAddress, chain, claiming, unstaking]);
 
 
   const handleApprove = async () => {
@@ -120,7 +119,7 @@ const Staking = ({ walletAddress, selectedChain }) => {
         ethers.parseUnits(amount, 18)
       );
       message.success(`Approval transaction sent: ${txResponse.hash}`);
-      
+
       await txResponse.wait();
       setApproval(true)
       message.success("Approval successful!");
@@ -162,6 +161,7 @@ const Staking = ({ walletAddress, selectedChain }) => {
 
   const handleUnstake = async (index) => {
     try {
+      setUnstaking(true);
       const provider = new ethers.JsonRpcProvider(chain.rpcUrl);
       const walletData = await getWalletData(walletAddress);
       const privateKey = await decryptData(walletData.walletKey);
@@ -176,7 +176,9 @@ const Staking = ({ walletAddress, selectedChain }) => {
       message.success("Unstaking successful!");
 
       getStakes();
+      setUnstaking(false);
     } catch (error) {
+      setUnstaking(false);
       console.warn("Error unstaking:", error);
       message.error("Unstaking failed!");
     }
@@ -184,6 +186,7 @@ const Staking = ({ walletAddress, selectedChain }) => {
 
   const claimReward = async (index) => {
     try {
+      setClaiming(true);
       const provider = new ethers.JsonRpcProvider(chain.rpcUrl);
       const walletData = await getWalletData(walletAddress);
       const privateKey = await decryptData(walletData.walletKey);
@@ -198,7 +201,9 @@ const Staking = ({ walletAddress, selectedChain }) => {
       message.success("Reward claiming successful!");
 
       getStakes();
+      setClaiming(false);
     } catch (error) {
+      setClaiming(false);
       console.warn("Error unstaking:", error);
       message.error("Reward Claiming failed!");
     }
@@ -233,7 +238,7 @@ const Staking = ({ walletAddress, selectedChain }) => {
           :
           <Button variant="primary" className="me-2" onClick={handleApprove}>Approve Tokens for Staking</Button>
         }
-
+        {(claiming || unstaking) && <span>"Please Wait"</span>}
         <h4 className='stakingtitle mt-4'>Staking History</h4>
         <Table className="historytabel table-bordered">
           <thead>
