@@ -98,9 +98,9 @@ const Staking = ({ walletAddress, selectedChain }) => {
   };
 
   useEffect(() => {
-    if ((!walletAddress || !chain) && (!claiming || !unstaking)) return;
+    if ((!walletAddress || !chain) && (!claiming || !unstaking || !staking)) return;
     getStakes();
-  }, [walletAddress, chain, claiming, unstaking]);
+  }, [walletAddress, chain, claiming, unstaking, staking]);
 
 
   const handleApprove = async () => {
