@@ -5,7 +5,6 @@ import { stakingContracts, tokenContracts } from '../../helpers/constants';
 import { ethers, formatUnits, parseUnits } from 'ethers';
 import { getAllChains, getWalletData } from '../../helpers/storage';
 import { decryptData } from '../../helpers/encryption';
-import Web3 from 'web3';
 import { Contract } from 'ethers';
 import { JsonRpcProvider } from 'ethers';
 import { message, Spin } from 'antd';
@@ -32,7 +31,8 @@ const Staking = ({ walletAddress, selectedChain }) => {
   const [approval, setApproval] = useState(false);
   const [claiming, setClaiming] = useState(false);
   const [unstaking, setUnstaking] = useState(false);
-
+  const [approving, setApproving] = useState(false);
+  const [staking, setStaking] = useState(false);
 
   const provider = chain ? new JsonRpcProvider(chain.rpcUrl) : null;
   const contract = new Contract(stakingContracts[selectedChain], StakingAbi, provider);
@@ -109,6 +109,8 @@ const Staking = ({ walletAddress, selectedChain }) => {
     }
 
     try {
+      setApproving(true)
+
       const walletData = await getWalletData(walletAddress);
       const privateKey = await decryptData(walletData.walletKey);
       const walletSigner = new ethers.Wallet(privateKey, provider);
@@ -123,9 +125,11 @@ const Staking = ({ walletAddress, selectedChain }) => {
       await txResponse.wait();
       setApproval(true)
       message.success("Approval successful!");
+      setApproving(false)
     } catch (error) {
       console.warn("Error approving tokens:", error);
       setApproval(false)
+      setApproving(false)
       message.error("Approval failed!");
     }
   };
@@ -135,6 +139,7 @@ const Staking = ({ walletAddress, selectedChain }) => {
     }
 
     try {
+      setStaking(true);
       const provider = new ethers.JsonRpcProvider(chain.rpcUrl);
       const walletData = await getWalletData(walletAddress);
       const privateKey = await decryptData(walletData.walletKey);
@@ -153,9 +158,11 @@ const Staking = ({ walletAddress, selectedChain }) => {
       setApproval(false)
       setAmount('');
       getStakes();
+      setStaking(false);
     } catch (error) {
       console.warn("Error staking tokens:", error);
       message.error("Staking failed!");
+      setStaking(false);
     }
   };
 
@@ -238,7 +245,9 @@ const Staking = ({ walletAddress, selectedChain }) => {
           :
           <Button variant="primary" className="me-2" onClick={handleApprove}>Approve Tokens for Staking</Button>
         }
-        {(claiming || unstaking) && <span>Please Wait</span>}
+
+        {(claiming || unstaking || approving || staking) && <Card.Text className="mt-3">Please Wait........</Card.Text>}
+
         <h4 className='stakingtitle mt-4'>Staking History</h4>
         <Table className="historytabel table-bordered">
           <thead>
