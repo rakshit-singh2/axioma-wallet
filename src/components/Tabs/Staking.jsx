@@ -80,7 +80,6 @@ const Staking = ({ walletAddress, selectedChain }) => {
       for (let i = 0; i < parseInt(stakeCount); i++) {
         const stake = await contract.stakes(walletAddress, i);
         const reward = await contract.pendingRewards(walletAddress, i);
-
         rewards += reward;
         stakes.push({
           amount: formatUnits(stake.amount, 18),
