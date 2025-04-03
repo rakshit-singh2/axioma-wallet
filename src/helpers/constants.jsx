@@ -1,6 +1,6 @@
 export const stakingContracts = {
     // '0x61': '0x95D6ADC516335a21910d81D1B97D4Ae29946fABA',
-    '0x61': '0xd4d97BdBCc0E73B54050f1b74D2D3CC2eC2615Dd',
+    '0x61': '0x3f377A78a0A37b5637057465e17FBb27c38Be1c5',
     '0x38': '',
 }
 export const tokenContracts = {

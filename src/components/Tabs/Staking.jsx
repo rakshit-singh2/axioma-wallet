@@ -238,7 +238,7 @@ const Staking = ({ walletAddress, selectedChain }) => {
           :
           <Button variant="primary" className="me-2" onClick={handleApprove}>Approve Tokens for Staking</Button>
         }
-        {(claiming || unstaking) && <span>"Please Wait"</span>}
+        {(claiming || unstaking) && <span>Please Wait</span>}
         <h4 className='stakingtitle mt-4'>Staking History</h4>
         <Table className="historytabel table-bordered">
           <thead>
