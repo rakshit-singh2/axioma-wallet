@@ -46,6 +46,7 @@ h2 {
 a:visited {
   color: blue;
 }
+
 .balance-container {
   display: flex;
   justify-content: center;
@@ -60,12 +61,14 @@ a:visited {
   font-weight: bold;
   color: #1890ff;
 }
+
 .set-password-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f0f2f5; /* Light background color */
+  background-color: #f0f2f5;
+  /* Light background color */
 }
 
 header {
@@ -156,4 +159,87 @@ header {
   object-fit: cover;
   border-radius: 10px;
 }
-.language-selector label{ color:#fff; padding-right:5px;}
+
+.language-selector label {
+  color: #fff;
+  padding-right: 5px;
+}
+
+.ant-tabs-nav-operations svg {
+  color: #fff;
+}
+
+.ant-tabs-tabpane-active .card-title {
+  color: #fff;
+  text-align: left;
+  font-size: 18px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.ant-tabs-tabpane-active .form-label {
+  color: #fff;
+  display: -webkit-box;
+}
+
+.stakingform input {
+  padding: 9px;
+  width: 95%;
+  border: none;
+  border-radius: 3px;
+  margin-bottom: 15px;
+}
+
+.ant-tabs-tabpane-active button {
+  float: left;
+  margin-right: 6px;
+  margin-bottom: 10px;
+}
+
+.Pendingtext p {
+  text-align: left;
+}
+
+.stakingform label {
+  margin-bottom: 5px;
+}
+
+.historytabel {
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.historytabel tr {
+  border: 1px solid #fff;
+}
+
+.historytabel tr td {
+  color: #fff;
+  border: 0.1px solid #626262;
+  padding: 4px;
+}
+
+.historytabel tr th {
+  color: #fff;
+  border: 0.1px solid #626262;
+  padding: 4px;
+}
+
+.stakingtitle {
+  color: #fff;
+  text-align: left;
+}
+
+.App h4 {
+  margin-top: 2px;
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.historytabel tr td button {
+  float: right !important;
+  margin-right: 2px;
+  margin-bottom: 0px !important;
+  padding: 5px 8px !important;
+}
