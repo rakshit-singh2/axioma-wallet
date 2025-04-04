@@ -221,12 +221,12 @@ const Staking = ({ walletAddress, selectedChain }) => {
   return (
     <Container className="mt-4">
       <Card className="p-4 shadow">
-        <Card.Title>Token Address: {stakeToken}</Card.Title>
-        <Card.Title>Token Balance: {tokenBalance}</Card.Title>
-        <Card.Title>Staking Dashboard</Card.Title>
+        <Card.Title><b>Token Address:</b> {stakeToken}</Card.Title>
+        <Card.Title><b>Token Balance:</b> {tokenBalance}</Card.Title>
+        <Card.Title><b>Staking Dashboard</b></Card.Title>
         <Form className='stakingform'>
           <Form.Group className="mb-3">
-            <Form.Label>Amount to Stake</Form.Label>
+            <Form.Label><b>Amount to Stake</b></Form.Label>
             <Form.Control
               type="number"
               placeholder="Enter amount"
@@ -242,7 +242,7 @@ const Staking = ({ walletAddress, selectedChain }) => {
             <Button variant="primary" className="me-2" onClick={() => handleStake(1095)}>Stake 36M</Button>
           </>
           :
-          <Button variant="primary" className="me-2" onClick={handleApprove}>Approve Tokens for Staking</Button>
+          <Button variant="primary" className="Approvebtn me-2" onClick={handleApprove}>Approve Tokens for Staking</Button>
         }
 
         {(claiming || unstaking || approving || staking) && <Card.Text className="mt-3">Please Wait........</Card.Text>}
