@@ -216,7 +216,7 @@ export const deleteChain = async (hex) => {
         }
         await store.delete(hex);
         await tx.done;
-        setLastChain('0x1')
+        setLastChain('0x38')
     } catch (error) {
         console.error('Error deleting chain from IndexedDB:', error);
         throw error;

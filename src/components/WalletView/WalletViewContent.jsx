@@ -46,7 +46,7 @@ const WalletViewContent = ({ walletAddress, selectedChain, setBalance}) => {
       children: <TokenList walletAddress={walletAddress} selectedChain={selectedChain} />,
     },
     ...(
-      selectedChain === "0x61"
+      selectedChain === "0x61" || selectedChain === "0x38"
         ? [{
             key: "5",
             label: t('Staking'),

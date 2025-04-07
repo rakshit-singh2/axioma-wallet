@@ -1,23 +1,17 @@
 import axios from 'axios';
 import { addChain } from './storage';
 const InitialChains = [{
-    name: 'Polygon',
-    ticker: "MATIC",
-    blockExplorerUrl: 'https://amoy.polygonscan.com',
-    rpcUrl: `https://polygon-mainnet.infura.io/v3/${import.meta.env.VITE_INFURA_API_KEY}`,
+    name: 'BNB Smart Chain',
+    ticker: "BNB",
+    blockExplorerUrl: 'https://bscscan.com/',
+    rpcUrl: `https://bsc-mainnet.infura.io/v3/${import.meta.env.VITE_INFURA_API_KEY}`,
     userAdded: false,
 }, {
-    name: 'Ethereum',
-    ticker: "ETH",
-    blockExplorerUrl: 'https://etherscan.io',
-    // rpcUrl: `https://rpc.mevblocker.io`,
-    rpcUrl: `https://mainnet.infura.io/v3/${import.meta.env.VITE_INFURA_API_KEY}`,
-    userAdded: false,
-},{
-    name: 'AlveyChain',
-    ticker: 'ALV',
-    blockExplorerUrl: 'https://alveyscan.com/',
-    rpcUrl: 'https://elves-core2.alvey.io',
+    name: 'BNB Smart Chain Testnet',
+    ticker: "BNB",
+    blockExplorerUrl: 'https://testnet.bscscan.com/',
+    // rpcUrl: `https://bsc-testnet.infura.io/v3/${import.meta.env.VITE_INFURA_API_KEY}`,
+    rpcUrl: `https://bsc-testnet-rpc.publicnode.com`,
     userAdded: false,
 }];
 

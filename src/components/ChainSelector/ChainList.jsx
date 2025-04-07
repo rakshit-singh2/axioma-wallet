@@ -51,7 +51,7 @@ const ChainList = ({ chainOptions, selectedChain, handleChainSelect, setAddChain
     try {
       await deleteChain(chain.value);
       setIsModalVisible(false);
-      setSelectedChain('0x1'); 
+      setSelectedChain('0x38'); 
       message.success(`${chain.label} chain deleted successfully`);
     } catch (error) {
       message.error('Failed to delete chain');

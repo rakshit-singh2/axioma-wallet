@@ -221,7 +221,7 @@ const Staking = ({ walletAddress, selectedChain }) => {
   return (
     <Container className="mt-4">
       <Card className="p-4 shadow">
-        <Card.Title><i>Token Address:</i> {stakeToken}</Card.Title>
+        <Card.Title><i>Token Address:</i>{stakeToken}</Card.Title>
         <Card.Title><i>Token Balance:</i>{tokenBalance}</Card.Title>
         <Card.Title><b>Staking Dashboard</b></Card.Title>
         <Form className='stakingform'>

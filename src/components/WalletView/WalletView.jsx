@@ -21,7 +21,7 @@ const WalletView = ({
 
   const prevChain = async () => {
     const lastSelected = await getLastChain();
-    const chainToSet = lastSelected ? lastSelected : '0xed5';
+    const chainToSet = lastSelected ? lastSelected : '0x38';
     setSelectedChain(chainToSet);
     const chainData = await getChain(chainToSet);
     setChain(chainData);
