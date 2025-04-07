@@ -5,7 +5,10 @@ const ImportAccountView = ({ privateKey, setPrivateKey, importFromPrivateKey }) 
   return (
     <>
       <Input value={privateKey} onChange={(e) => setPrivateKey(e.target.value)} placeholder="Private Key" />
-      <Button onClick={importFromPrivateKey}>Import Account</Button>
+      <Button style={{ color: '#000' }} onClick={importFromPrivateKey}>
+        Import Account
+      </Button>
+
     </>
   );
 };
