@@ -8,7 +8,7 @@ const InitialChains = [{
     userAdded: false,
 }, {
     name: 'BNB Smart Chain Testnet',
-    ticker: "BNB",
+    ticker: "tBNB",
     blockExplorerUrl: 'https://testnet.bscscan.com/',
     // rpcUrl: `https://bsc-testnet.infura.io/v3/${import.meta.env.VITE_INFURA_API_KEY}`,
     rpcUrl: `https://bsc-testnet-rpc.publicnode.com`,
